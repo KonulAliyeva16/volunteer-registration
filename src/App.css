@@ -1,0 +1,297 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Form css  */
+
+.main {
+  width: 100%;
+  height: 100%;
+  /* background: linear-gradient(to right, #5E42E7, #D544AA); */
+  background: radial-gradient(circle at top left,
+      rgba(236, 72, 153, 0.6),
+      transparent 60%),
+    radial-gradient(circle at bottom right,
+      rgba(99, 102, 241, 0.6),
+      transparent 70%),
+    linear-gradient(135deg,
+      rgba(236, 72, 153, 1) 0%,
+      rgba(147, 51, 234, 1) 100%);
+  padding: 120px;
+}
+
+.steps {
+  gap: 10px;
+}
+
+.btn-step{
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 14px;
+  min-width: 60px;
+  cursor: pointer;
+}
+.prev{
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+}
+
+.next{
+  background: linear-gradient(to right, #24CAEF, #388AF5);
+}
+
+form {
+  display: grid;
+  /* grid-template-columns: repeat(2,1fr); */
+  gap: 20px;
+  padding: 15px;
+}
+
+h1,
+h2 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-content {
+  border-radius: 22px;
+  background-color: transparent;
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+  backdrop-filter: blur(20px);
+  padding: 15px;
+  margin: auto;
+  max-width: 700px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+label {
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+input {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 10px;
+  color: #fff;
+  outline: none;
+  min-width: 300px;
+}
+
+input::placeholder {
+  color: #fff;
+}
+
+select {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 10px;
+  color: #fff;
+  outline: none;
+  min-width: 300px;
+}
+
+
+/* Stepper CSS  */
+
+.stepper-container {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.stepper::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e0e0e0;
+  z-index: 1;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  color: #666;
+  font-weight: bold;
+}
+
+.step.active .step-number {
+  background: #1976d2;
+  color: white;
+}
+
+.step.completed .step-number {
+  background: #4caf50;
+  color: white;
+}
+
+.step-label {
+  color: #666;
+  font-size: 14px;
+}
+
+.step.active .step-label {
+  color: #fff;
+  font-weight: bold;
+}
+
+.step-content {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  min-height: 200px;
+}
+
+.stepper-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stepper-buttons button {
+  padding: 10px 20px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.stepper-buttons button:hover {
+  background: #1565c0;
+}
+
+/* Step 2 CSS  */
+
+.preferences-container{
+  gap: 20px;
+}
+
+.days,
+.times,
+.location {
+  gap: 10px;
+}
+
+.days button {
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  height: 90px;
+  background-color: transparent;
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+
+.times button {
+  background-color: transparent;
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  height: 120px;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+
+.location button {
+  background-color: transparent;
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  margin-top: 10px;
+  gap: 8px;
+  padding: 3px;
+}
+
+.selected-day {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border: 2px solid #fff !important;
+}
+
+.days button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.days img,
+.preferences {
+  max-width: 16px;
+}
+
+p {
+  margin-top: 10px;
+}
+
+label {
+  margin-top: 10px;
+}
+
+.badge-m {
+  background-color: rgba(252, 222, 79, 0.3);
+  color: #FCDE4F;
+  padding: 10px;
+  border-radius: 16px;
+}
+
+.badge-a {
+  background-color: rgba(241, 79, 67, 0.3);
+  color: rgb(241, 79, 67);
+  padding: 10px;
+  border-radius: 16px;
+}
+
+.badge-e {
+  background-color: rgba(111, 149, 250, 0.3);
+  color: rgb(111, 149, 250);
+  padding: 10px;
+  border-radius: 16px;
+}
