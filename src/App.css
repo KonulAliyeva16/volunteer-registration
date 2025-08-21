@@ -26,7 +26,7 @@
   gap: 10px;
 }
 
-.btn-step{
+.btn-step {
   color: #fff;
   border: none;
   padding: 10px;
@@ -34,11 +34,12 @@
   min-width: 60px;
   cursor: pointer;
 }
-.prev{
+
+.prev {
   background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
 }
 
-.next{
+.next {
   background: linear-gradient(to right, #24CAEF, #388AF5);
 }
 
@@ -202,13 +203,14 @@ select {
 
 /* Step 2 CSS  */
 
-.preferences-container{
+.preferences-container {
   gap: 20px;
 }
 
 .days,
 .times,
-.location {
+.location,
+.gap-3 {
   gap: 10px;
 }
 
@@ -253,11 +255,44 @@ select {
   padding: 3px;
 }
 
+.skills button {
+  background-color: transparent;
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  margin-top: 10px;
+  gap: 8px;
+  padding: 7px;
+  color: #fff;
+}
+
+.skill-card {
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  margin-top: 10px;
+  gap: 8px;
+  padding: 10px;
+}
+
 .selected-day {
   background-color: rgba(255, 255, 255, 0.2) !important;
   border: 2px solid #fff !important;
 }
+.selected-rate {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+.selected-skill{
+  
+  background-image: linear-gradient(120deg, #6877E1, #7258B3)!important;
 
+}
 .days button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
@@ -294,4 +329,58 @@ label {
   color: rgb(111, 149, 250);
   padding: 10px;
   border-radius: 16px;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 50%;
+  padding: 4px;
+}
+.skill-card h3, .skill-card p{
+  color: #fff;
+
+}
+.skills, .star{
+  gap: 5px;
+}
+.star button{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+  color: #fff;
+}
+
+.circle img{
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+}
+
+.c-purple {
+  background: linear-gradient(120deg, #6B99FA, #A25BF7);
+}
+.c-red{
+  background: linear-gradient(120deg,#F46BA4,#F04A53);
+}
+.c-green{
+  background: linear-gradient(120deg,#49D191,#3B88EF);
+}
+
+.c-orange{
+  background: linear-gradient(120deg,#F9BE12,#F97C16);
+
+}
+.c-pink{
+  background: linear-gradient(120deg,#C382F7,#E650A7);
+
+}
+.c-blue{
+  background: linear-gradient(120deg,#22CDEF,#378FF5);
+
 }

@@ -4,12 +4,29 @@ export interface FormData {
     lastName: string;
     email: string;
     phone: string,
-    street: string;
-    city: string;
-    zipCode: string;
     preferredDays?: string[];
     preferredTime?: string;
     locationPreference?: string;
+    selectedSkills?: { name: string; rating: number; }[];
+  }
+
+ export type SkillCategory = 'Technical' | 'Creative' | 'Communication' | 'Leadership' ;
+
+ export interface Skill {
+    id: number;
+    category: SkillCategory;
+    name: string;
+    tools: string;
+    icon: {
+      symbol: string;
+    };
+    rating: number;
+    circle: string
+  }
+
+ export interface SkillRatingProps {
+    rating: number;
+    onRatingChange: (newRating: number) => void;
   }
   
   // Defines the props for each step component.

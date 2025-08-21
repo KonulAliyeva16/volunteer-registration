@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+// import './App.css';
 import Step1 from './components/Step1';
 import Step2 from './components/Step2';
 import Step3 from './components/Step3';
@@ -15,9 +15,6 @@ export default function App() {
     lastName: '',
     email: '',
     phone: '',
-    street: '',
-    city: '',
-    zipCode: '',
   });
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -61,13 +58,7 @@ export default function App() {
         newErrors.locationPreference = 'Please select a location preference.';
       }
     } else if (step === 3) {
-      if (!formData.street) newErrors.street = 'Street address is required.';
-      if (!formData.city) newErrors.city = 'City is required.';
-      if (!formData.zipCode) {
-        newErrors.zipCode = 'ZIP code is required.';
-      } else if (!/^\d{5}(-\d{4})?$/.test(formData.zipCode)) {
-        newErrors.zipCode = 'ZIP code is invalid.';
-      }
+     
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -115,7 +106,7 @@ export default function App() {
     setStep(1);
     setFormData({
       firstName: '', lastName: '', email: '',
-      street: '', city: '', zipCode: '', phone: '',
+     phone: '',
     });
     setErrors({});
     setIsSubmitted(false);
@@ -137,22 +128,22 @@ export default function App() {
     }
   };
   
-  if (isSubmitted) {
-    return (
-      <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center p-4">
-        <div className="w-full max-w-lg p-8 rounded-xl shadow-2xl text-center">
-          <h2 className="text-3xl font-bold text-green-400 mb-4">Success!</h2>
-          <p className="text-gray-300 mb-6">Your registration has been submitted successfully.</p>
-          <button
-            onClick={handleReset}
-            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 focus:ring-offset-gray-800 transition-colors duration-300"
-          >
-            Create Another Registration
-          </button>
-        </div>
-      </div>
-    )
-  }
+  // if (isSubmitted) {
+  //   return (
+  //     <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center p-4">
+  //       <div className="w-full max-w-lg p-8 rounded-xl shadow-2xl text-center">
+  //         <h2 className="text-3xl font-bold text-green-400 mb-4">Success!</h2>
+  //         <p className="text-gray-300 mb-6">Your registration has been submitted successfully.</p>
+  //         <button
+  //           onClick={handleReset}
+  //           className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 focus:ring-offset-gray-800 transition-colors duration-300"
+  //         >
+  //           Create Another Registration
+  //         </button>
+  //       </div>
+  //     </div>
+  //   )
+  // }
 
   return (
     <div className="main min-h-screen bg-gray-900 text-white flex items-center justify-center p-4 font-sans">

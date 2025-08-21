@@ -19,6 +19,11 @@ const Step2 = ({ formData, updateFormData, errors }: StepProps) => {
 
   const locationOptions = [
     {
+      value: "hybrid",
+      label: "Hybrid",
+      icon: "/icons/hybrid-work.png",
+    },
+    {
       value: "remote",
       label: "Remote/Virtual",
       icon: "/icons/home.png",
@@ -28,11 +33,7 @@ const Step2 = ({ formData, updateFormData, errors }: StepProps) => {
       label: "On-site/Physical",
       icon: "/icons/office.png",
     },
-    {
-      value: "hybrid",
-      label: "Hybrid",
-      icon: "/icons/hybrid-work.png",
-    },
+  
   ];
 
   const toggleDay = (dayValue: string) => {
@@ -110,7 +111,7 @@ const Step2 = ({ formData, updateFormData, errors }: StepProps) => {
             <button
               key={time.value}
               type="button"
-              className={`flex flex-col m-4 gap-4 items-center justify-center p-2 rounded-md transition-all ${formData.preferredTime === time.value
+              className={`flex flex-col m-4 gap-4 items-center justify-center p-2 ${formData.preferredTime === time.value
                 ? 'selected-day'
                 : ''
                 }`}
