@@ -1,17 +1,47 @@
-# React + TypeScript + Vite
+Volunteer Registration (React + TypeScript + Vite + Tailwind)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive multi-step form for volunteer registrations.
+Built with React 18, TypeScript, Vite, and Tailwind CSS v4.
+Glass-morphism UI, accessible keyboard navigation, client-side validation, and a concise review step.
 
-Currently, two official plugins are available:
+<p align="center"> <img src="public/screenshots/first-step.png" alt="Step 1 – Personal Info" width="75%" /> </p>
+✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+4-step wizard
 
-## Expanding the ESLint configuration
+Personal Info
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Availability (days, time, location)
 
-```js
+Interests & Skills (categories, selectable cards, 1–5 rating with deselect)
+
+Review (read-only summary)
+
+Submit on Step 3 → jumps to Step 4 as review-only
+
+Skills rating with deselect (clicking the same star again resets to 0)
+
+Client-side validation
+
+Step 1: required fields + email format
+
+Step 2: at least one day, time, and location
+
+Responsive UI for mobile, tablet, desktop
+
+Type-safe FormData + prop contracts
+
+
+🧱 Tech Stack
+
+React 18 + TypeScript
+
+Vite (fast dev server + build)
+
+Tailwind CSS v4
+
+PostCSS (with @tailwindcss/postcss)
+
 export default tseslint.config([
   globalIgnores(['dist']),
   {
