@@ -19,7 +19,7 @@ const Stepper: React.FC<StepperProps> = ({ steps, currentStep, onStepChange }) =
           <div 
             key={step.number} 
             className={`step ${currentStep === step.number ? 'active' : ''} ${step.number <= currentStep ? 'completed' : ''}`}
-            onClick={() => onStepChange(step.number)}
+            // onClick={() => onStepChange(step.number)}
           >
             <div className="step-number">{step.number}</div>
             <div className="step-label">{step.label}</div>

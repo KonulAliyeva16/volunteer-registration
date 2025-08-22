@@ -8,8 +8,6 @@
 
 .main {
   width: 100%;
-  height: 100%;
-  /* background: linear-gradient(to right, #5E42E7, #D544AA); */
   background: radial-gradient(circle at top left,
       rgba(236, 72, 153, 0.6),
       transparent 60%),
@@ -20,10 +18,27 @@
       rgba(236, 72, 153, 1) 0%,
       rgba(147, 51, 234, 1) 100%);
   padding: 120px;
+  min-height: 100dvh;
+  height: auto;
 }
+
+input,
+select {
+  width: 100%;
+  min-width: 0;          
+}
+
+form {
+  grid-template-columns: 1fr;  
+}
+.form-group.full-width { grid-column: 1 / -1; }
 
 .steps {
   gap: 10px;
+}
+
+span {
+  color: #fff;
 }
 
 .btn-step {
@@ -61,7 +76,6 @@ h2 {
   border-radius: 22px;
   background-color: transparent;
   background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
-  backdrop-filter: blur(20px);
   padding: 15px;
   margin: auto;
   max-width: 700px;
@@ -221,7 +235,6 @@ select {
   height: 90px;
   background-color: transparent;
   background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
-  backdrop-filter: blur(20px);
   cursor: pointer;
   margin-top: 10px;
   gap: 8px;
@@ -231,7 +244,6 @@ select {
 .times button {
   background-color: transparent;
   background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
-  backdrop-filter: blur(20px);
   cursor: pointer;
   outline: none;
   border: none;
@@ -245,7 +257,6 @@ select {
 .location button {
   background-color: transparent;
   background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
-  backdrop-filter: blur(20px);
   cursor: pointer;
   outline: none;
   border: none;
@@ -258,7 +269,6 @@ select {
 .skills button {
   background-color: transparent;
   background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
-  backdrop-filter: blur(20px);
   cursor: pointer;
   outline: none;
   border: none;
@@ -268,10 +278,13 @@ select {
   padding: 7px;
   color: #fff;
 }
+.skill-card{
+  max-width: 300px;
+}
 
-.skill-card {
+.skill-card,
+.summary-card {
   background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
-  backdrop-filter: blur(20px);
   cursor: pointer;
   outline: none;
   border: none;
@@ -285,21 +298,26 @@ select {
   background-color: rgba(255, 255, 255, 0.2) !important;
   border: 2px solid #fff !important;
 }
+
 .selected-rate {
   background-color: rgba(255, 255, 255, 0.7) !important;
 }
-.selected-skill{
-  
-  background-image: linear-gradient(120deg, #6877E1, #7258B3)!important;
+
+.selected-skill {
+
+  background-image: linear-gradient(120deg, #6877E1, #7258B3) !important;
 
 }
+
 .days button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
 .days img,
-.preferences {
+.preferences,
+.location img {
   max-width: 16px;
+  max-height: 16px;
 }
 
 p {
@@ -310,25 +328,25 @@ label {
   margin-top: 10px;
 }
 
+.badge{
+  font-size: 12px;
+  padding: 4px;
+  border-radius: 16px;
+}
+
 .badge-m {
   background-color: rgba(252, 222, 79, 0.3);
   color: #FCDE4F;
-  padding: 10px;
-  border-radius: 16px;
 }
 
 .badge-a {
   background-color: rgba(241, 79, 67, 0.3);
   color: rgb(241, 79, 67);
-  padding: 10px;
-  border-radius: 16px;
 }
 
 .badge-e {
   background-color: rgba(111, 149, 250, 0.3);
   color: rgb(111, 149, 250);
-  padding: 10px;
-  border-radius: 16px;
 }
 
 .circle {
@@ -338,14 +356,20 @@ label {
   border-radius: 50%;
   padding: 4px;
 }
-.skill-card h3, .skill-card p{
+
+.skill-card h3,
+.skill-card p {
   color: #fff;
 
 }
-.skills, .star{
+
+.skills,
+.star {
   gap: 5px;
+  flex-wrap: wrap;
 }
-.star button{
+
+.star button {
   background-color: transparent;
   border: none;
   outline: none;
@@ -356,7 +380,7 @@ label {
   color: #fff;
 }
 
-.circle img{
+.circle img {
   width: 100%;
   height: 100%;
   object-fit: scale-down;
@@ -365,22 +389,54 @@ label {
 .c-purple {
   background: linear-gradient(120deg, #6B99FA, #A25BF7);
 }
-.c-red{
-  background: linear-gradient(120deg,#F46BA4,#F04A53);
-}
-.c-green{
-  background: linear-gradient(120deg,#49D191,#3B88EF);
+
+.c-red {
+  background: linear-gradient(120deg, #F46BA4, #F04A53);
 }
 
-.c-orange{
-  background: linear-gradient(120deg,#F9BE12,#F97C16);
+.c-green {
+  background: linear-gradient(120deg, #49D191, #3B88EF);
+}
+
+.c-orange {
+  background: linear-gradient(120deg, #F9BE12, #F97C16);
 
 }
-.c-pink{
-  background: linear-gradient(120deg,#C382F7,#E650A7);
+
+.c-pink {
+  background: linear-gradient(120deg, #C382F7, #E650A7);
 
 }
-.c-blue{
-  background: linear-gradient(120deg,#22CDEF,#378FF5);
 
+.c-blue {
+  background: linear-gradient(120deg, #22CDEF, #378FF5);
+}
+
+.summary-grid {
+  gap: 6px;
+
+  h3 {
+    color: #fff;
+    gap: 5px;
+  }
+
+  p {
+    color: #fff;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    padding: 20px;
+  }
+
+  .form-content {
+    padding: 10px;
+  }
+
+  input,
+  select {
+    min-width: 0;
+  }
+  
 }

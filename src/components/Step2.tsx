@@ -72,7 +72,7 @@ const Step2 = ({ formData, updateFormData, errors }: StepProps) => {
   return (
     <div className="flex flex-col preferences-container">
       <div>
-        <label className="block text-sm font-medium text-gray-300">
+        <label className="flex gap-2 items-center text-sm font-medium text-gray-300">
           <img className="preferences" src="/icons/calendar.png" alt="calendar" /> Preferred Days *
         </label>
         <p className="text-xs text-gray-400 mt-1 mb-3">Select all days that work for you</p>
@@ -102,7 +102,7 @@ const Step2 = ({ formData, updateFormData, errors }: StepProps) => {
       <div>
 
 
-        <label className="block text-sm font-medium text-gray-300">
+        <label className="flex gap-2 items-center text-sm font-medium text-gray-300">
           <img className="preferences" src="/icons/time.png" alt="time" />  Time Preference *
         </label>
         <p className="text-xs text-gray-400 mt-1 mb-3">Select your preferred time of day</p>
@@ -131,7 +131,7 @@ const Step2 = ({ formData, updateFormData, errors }: StepProps) => {
 
       <div className="flex flex-col space-y-6">
         <div>
-          <label className="block text-lg font-bold mb-4 text-gray-300">
+          <label className="flex gap-2 items-center text-lg font-bold mb-4 text-gray-300">
             <img
               className="preferences w-6 h-6 inline-block mr-2"
               src="/icons/location-pin.png"

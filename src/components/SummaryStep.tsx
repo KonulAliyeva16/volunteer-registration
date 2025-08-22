@@ -40,24 +40,17 @@ const SummaryStep: FC<ConfirmationPageProps> = ({ formData }) => {
   };
 
   return (
-    <div className="flex flex-col items-center p-8 bg-black/50 text-white rounded-2xl w-full max-w-4xl mx-auto backdrop-blur-md">
+    <div className="flex flex-col items-center">
       <div className="text-center mb-8">
-        <div className="inline-block relative">
-          {/* <FaRegCheckCircle className="text-green-500 text-8xl" /> */}
-          <div className="absolute -top-2 right-0 bg-yellow-400 text-black rounded-full p-1 text-xs font-bold">
-            <span role="img" aria-label="star">⭐</span>
-          </div>
-        </div>
-        <h1 className="text-4xl font-bold mt-4 text-white">Registration Complete!</h1>
-        <p className="text-gray-300 mt-2">Thank you for joining our volunteer community</p>
-        <p className="text-red-500 font-bold mt-4">❤️ Welcome to the team! ❤️</p>
+        <h1 className="text-4xl font-bold mt-4 text-white">Registration Completed!</h1>
+        <p className="text-gray-300 mt-2 text-white">Thank you for joining our volunteer community</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mb-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full mb-12 summary-grid">
         {/* Personal Info Card */}
-        <div className="bg-gray-800 p-6 rounded-xl shadow-lg flex flex-col">
+        <div className="summary-card flex flex-col">
           <h3 className="text-xl font-bold mb-4 flex items-center">
-            <img src="/icons/user-circle.png" alt="Personal Info Icon" className="w-6 h-6 mr-2" />
+            <img src="/icons/user.png" alt="Personal Info Icon" className="w-6 h-6 mr-2" />
             Personal Info
           </h3>
           <p>
@@ -72,9 +65,9 @@ const SummaryStep: FC<ConfirmationPageProps> = ({ formData }) => {
         </div>
 
         {/* Availability Card */}
-        <div className="bg-gray-800 p-6 rounded-xl shadow-lg flex flex-col">
+        <div className="summary-card flex flex-col">
           <h3 className="text-xl font-bold mb-4 flex items-center">
-            <img src="/icons/calendar-check.png" alt="Availability Icon" className="w-6 h-6 mr-2" />
+            <img src="/icons/calendar-2.png" alt="Availability Icon" className="w-6 h-6 mr-2" />
             Availability
           </h3>
           <p>
@@ -89,9 +82,9 @@ const SummaryStep: FC<ConfirmationPageProps> = ({ formData }) => {
         </div>
         
         {/* Skills & Expertise Card */}
-        <div className="bg-gray-800 p-6 rounded-xl shadow-lg flex flex-col col-span-full lg:col-span-1">
+        <div className="summary-card flex flex-col col-span-full lg:col-span-1">
           <h3 className="text-xl font-bold mb-4 flex items-center">
-            <img src="/icons/tools.png" alt="Skills Icon" className="w-6 h-6 mr-2" />
+            <img src="/icons/skill.png" alt="Skills Icon" className="w-6 h-6 mr-2" />
             Skills & Expertise
           </h3>
           {formData.selectedSkills && formData.selectedSkills.length > 0 ? (
@@ -120,22 +113,22 @@ const SummaryStep: FC<ConfirmationPageProps> = ({ formData }) => {
         <h2 className="text-3xl font-bold mb-6 text-center">What happens next?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
           <div className="flex flex-col items-center">
-            <div className="bg-purple-600 rounded-full p-4 mb-3">
-              <img src="/icons/email.png" alt="Email Icon" className="w-8 h-8" />
+            <div className="p-4 mb-3">
+              <img src="/icons/mail.png" alt="Email Icon" className="w-8 h-8" />
             </div>
             <h4 className="font-semibold text-lg">Email Confirmation</h4>
             <p className="text-sm text-gray-400">You'll receive a confirmation email within 24 hours.</p>
           </div>
           <div className="flex flex-col items-center">
-            <div className="bg-purple-600 rounded-full p-4 mb-3">
-              <img src="/icons/team.png" alt="Team Icon" className="w-8 h-8" />
+            <div className="p-4 mb-3">
+              <img src="/icons/people.png" alt="Team Icon" className="w-8 h-8" />
             </div>
             <h4 className="font-semibold text-lg">Team Assignment</h4>
             <p className="text-sm text-gray-400">We'll match you with projects based on your skills.</p>
           </div>
           <div className="flex flex-col items-center">
-            <div className="bg-purple-600 rounded-full p-4 mb-3">
-              <img src="/icons/start.png" alt="Start Icon" className="w-8 h-8" />
+            <div className="p-4 mb-3">
+              <img src="/icons/heart.png" alt="Start Icon" className="w-8 h-8" />
             </div>
             <h4 className="font-semibold text-lg">Start Volunteering</h4>
             <p className="text-sm text-gray-400">Begin making a difference in your community.</p>

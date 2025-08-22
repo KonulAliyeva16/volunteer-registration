@@ -1,40 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import type{ MouseEvent } from 'react';
-import type { FC } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
+import type { MouseEvent, FC } from 'react';
 import type { StepProps, Skill, SkillCategory, SkillRatingProps } from "../types";
 
-// --- Data (Move this to Step3.tsx) ---
 const initialSkills: Skill[] = [
-  { id: 1, category: 'Technical', name: 'Web Development', tools: 'HTML, CSS, JavaScript', icon: { symbol: '/icons/code.png', }, rating: 3, circle: 'purple' },
-  { id: 2, category: 'Creative', name: 'Graphic Design', tools: 'Photoshop, Illustrator', icon: { symbol: '/icons/paint-brush.png', }, rating: 4, circle: 'red' },
-  { id: 3, category: 'Communication', name: 'Content Writing', tools: 'Articles, Blogs, Copy', icon: { symbol: '/icons/pen-tool.png' }, rating: 5, circle: 'green' },
-  { id: 4, category: 'Leadership', name: 'Project Management', tools: 'Planning, Coordination', icon: { symbol: '/icons/clipboard.png' }, rating: 4, circle: 'orange' },
-  { id: 5, category: 'Creative', name: 'Social Media', tools: 'Marketing, Content', icon: { symbol: '/icons/share.png', }, rating: 2, circle: 'pink' },
-  { id: 6, category: 'Technical', name: 'Data Analysis', tools: 'Excel, Analytics', icon: { symbol: '/icons/analytics.png', }, rating: 2, circle: 'blue' },
-  { id: 7, category: 'Technical', name: 'Game Development', tools: 'Unity, Blender', icon: { symbol: '/icons/console.png', }, rating: 2, circle: 'red' },
-  { id: 8, category: 'Technical', name: 'Artificial Intelligence', tools: 'Python, TensorFlow', icon: { symbol: '/icons/generative.png', }, rating: 2, circle: 'green' },
-  { id: 9, category: 'Communication', name: 'Public Speaking', tools: 'Presentations, Workshops', icon: { symbol: '/icons/convo.png' }, rating: 5, circle: 'red' },
-  { id: 10, category: 'Communication', name: 'Negotiation', tools: 'Deals, Persuasion', icon: { symbol: '/icons/trade.png' }, rating: 5, circle: 'pink' },
+  { id: 1, category: 'Technical', name: 'Web Development', tools: 'HTML, CSS, JavaScript', icon: { symbol: '/icons/code.png', }, rating: 0, circle: 'purple' },
+  { id: 2, category: 'Creative', name: 'Graphic Design', tools: 'Photoshop, Illustrator', icon: { symbol: '/icons/paint-brush.png', }, rating: 0, circle: 'red' },
+  { id: 3, category: 'Communication', name: 'Content Writing', tools: 'Articles, Blogs, Copy', icon: { symbol: '/icons/pen-tool.png' }, rating: 0, circle: 'green' },
+  { id: 4, category: 'Leadership', name: 'Project Management', tools: 'Planning, Coordination', icon: { symbol: '/icons/clipboard.png' }, rating: 0, circle: 'orange' },
+  { id: 5, category: 'Creative', name: 'Social Media', tools: 'Marketing, Content', icon: { symbol: '/icons/share.png', }, rating: 0, circle: 'pink' },
+  { id: 6, category: 'Technical', name: 'Data Analysis', tools: 'Excel, Analytics', icon: { symbol: '/icons/analytics.png', }, rating: 0, circle: 'blue' },
+  { id: 7, category: 'Technical', name: 'Game Development', tools: 'Unity, Blender', icon: { symbol: '/icons/console.png', }, rating: 0, circle: 'red' },
+  { id: 8, category: 'Technical', name: 'Artificial Intelligence', tools: 'Python, TensorFlow', icon: { symbol: '/icons/generative.png', }, rating: 0, circle: 'green' },
+  { id: 9, category: 'Communication', name: 'Public Speaking', tools: 'Presentations, Workshops', icon: { symbol: '/icons/convo.png' }, rating: 0, circle: 'red' },
+  { id: 10, category: 'Communication', name: 'Negotiation', tools: 'Deals, Persuasion', icon: { symbol: '/icons/trade.png' }, rating: 0, circle: 'pink' },
 ];
 
-
-// --- Sub-Components (Unchanged) ---
-
 const SkillRating: FC<SkillRatingProps> = ({ rating, onRatingChange }) => (
-  // Add stopPropagation to prevent card selection when rating is clicked
-  <div className="flex items-center space-x-2 mt-4 star" onClick={(e: MouseEvent) => e.stopPropagation()}>
+  <div
+    className="flex items-center space-x-2 mt-4 star"
+    onClick={(e: MouseEvent) => e.stopPropagation()}
+  >
     {[1, 2, 3, 4, 5].map((star, index) => (
       <button
         key={star}
         type="button"
-        onClick={() => onRatingChange(star)}
+        onClick={() => {
+          if (rating === star) {
+            onRatingChange(0);
+          } else {
+            onRatingChange(star);
+          }
+        }}
         className={`w-6 h-6 rounded-full transition-colors duration-200 ${
           star <= rating ? 'selected-rate' : ''
         }`}
-      >{index + 1}</button>
+      >
+        {index + 1}
+      </button>
     ))}
   </div>
 );
+
 
 const getCirclecolor = (skillColor: string) => {
   switch (skillColor) {
@@ -48,7 +54,6 @@ const getCirclecolor = (skillColor: string) => {
   }
 };
 
-// Skill Card Component Props (Updated)
 interface SkillCardProps {
   skill: Skill;
   isSelected: boolean;
@@ -63,7 +68,6 @@ const SkillCard: FC<SkillCardProps> = ({ skill, isSelected, onSelect, onRatingCh
     tabIndex={0}
     aria-pressed={isSelected}
     onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSelect()}
-    // Add a 'selected' class when isSelected is true
     className={`skill-card flex flex-col items-center justify-center ${isSelected ? 'selected-day' : ''}`}
   >
     <div className={`circle ${getCirclecolor(skill.circle)}`}>
@@ -79,8 +83,17 @@ const SkillCard: FC<SkillCardProps> = ({ skill, isSelected, onSelect, onRatingCh
   </div>
 );
 
-
-// --- Main Component (Updated) ---
+const shallowArrayOfObjsEqual = (
+  a?: { name: string; rating: number }[],
+  b?: { name: string; rating: number }[],
+) => {
+  if (a === b) return true;
+  if (!a || !b || a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i].name !== b[i].name || a[i].rating !== b[i].rating) return false;
+  }
+  return true;
+};
 
 const Step3 = ({ formData, updateFormData, errors }: StepProps) => {
   const categories: SkillCategory[] = ['Technical', 'Creative', 'Communication', 'Leadership'];
@@ -88,30 +101,32 @@ const Step3 = ({ formData, updateFormData, errors }: StepProps) => {
   const [skills, setSkills] = useState<Skill[]>(initialSkills);
   const [selectedSkills, setSelectedSkills] = useState<number[]>([]);
 
-  useEffect(() => {
-    const finalSelectedSkills = skills
-      .filter(skill => selectedSkills.includes(skill.id))
-      .map(skill => ({
-        name: skill.name,
-        rating: skill.rating
-      }));
-    updateFormData({ selectedSkills: finalSelectedSkills });
-  }, [selectedSkills, skills, updateFormData]);
+  const selectedPayload = useMemo(
+    () =>
+      skills
+        .filter(s => selectedSkills.includes(s.id))
+        .map(s => ({ name: s.name, rating: s.rating })),
+    [skills, selectedSkills]
+  );
 
+  const updateRef = useRef(updateFormData);
+  useEffect(() => { updateRef.current = updateFormData; }, [updateFormData]);
+  useEffect(() => {
+    const current = (formData as any).selectedSkills as { name: string; rating: number }[] | undefined;
+    if (!shallowArrayOfObjsEqual(current, selectedPayload)) {
+      updateRef.current({ selectedSkills: selectedPayload });
+    }
+  }, [selectedPayload, formData]);
 
   const handleRatingChange = (skillId: number, newRating: number) => {
-    setSkills(currentSkills =>
-      currentSkills.map(skill =>
-        skill.id === skillId ? { ...skill, rating: newRating } : skill
-      )
+    setSkills(curr =>
+      curr.map(s => (s.id === skillId ? { ...s, rating: newRating } : s))
     );
   };
 
   const toggleSkillSelection = (skillId: number) => {
-    setSelectedSkills(prevSelected =>
-      prevSelected.includes(skillId)
-        ? prevSelected.filter(id => id !== skillId)
-        : [...prevSelected, skillId]
+    setSelectedSkills(prev =>
+      prev.includes(skillId) ? prev.filter(id => id !== skillId) : [...prev, skillId]
     );
   };
 
@@ -124,22 +139,21 @@ const Step3 = ({ formData, updateFormData, errors }: StepProps) => {
           <h1 className="text-4xl font-bold">What are your skills?</h1>
           <p className="text-white/80 mt-2">Share your talents and expertise with us</p>
         </div>
+
         <div className="flex items-center justify-center space-x-2 mb-10 skills">
           {categories.map(category => (
             <button
               key={category}
               type="button"
               onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2 text-sm font-semibold rounded-full transition-colors duration-300 ${
-                activeCategory === category ? 'selected-skill' : ''
-              }`}
+              className={`px-5 py-2 text-sm font-semibold rounded-full transition-colors duration-300 ${activeCategory === category ? 'selected-skill' : ''}`}
             >
               {category}
             </button>
           ))}
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {filteredSkills.map(skill => (
             <SkillCard
               key={skill.id}
