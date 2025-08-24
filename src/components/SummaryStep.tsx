@@ -1,5 +1,3 @@
-// ConfirmationPage.tsx
-import React from 'react';
 import type { FC } from 'react';
 // import { FaRegCheckCircle } from 'react-icons/fa';
 import type { FormData } from '../types';

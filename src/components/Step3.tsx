@@ -95,7 +95,7 @@ const shallowArrayOfObjsEqual = (
   return true;
 };
 
-const Step3 = ({ formData, updateFormData, errors }: StepProps) => {
+const Step3 = ({ formData, updateFormData}: StepProps) => {
   const categories: SkillCategory[] = ['Technical', 'Creative', 'Communication', 'Leadership'];
   const [activeCategory, setActiveCategory] = useState<SkillCategory>('Technical');
   const [skills, setSkills] = useState<Skill[]>(initialSkills);

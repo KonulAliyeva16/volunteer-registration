@@ -8,10 +8,9 @@ interface Step {
 interface StepperProps {
   steps: Step[];
   currentStep: number;
-  onStepChange: (stepNumber: number) => void;
 }
 
-const Stepper: React.FC<StepperProps> = ({ steps, currentStep, onStepChange }) => {
+const Stepper: React.FC<StepperProps> = ({ steps, currentStep }) => {
   return (
     <div className="stepper-container">
       <div className="stepper">
