@@ -76,11 +76,6 @@ export default function App() {
   };
   const prevStep = () => setStep(s => Math.max(1, s - 1));
 
-  const handleStepChange = useCallback((stepNumber: number) => {
-    if (stepNumber < step) setStep(stepNumber);
-    else if (stepNumber > step && validateStep()) setStep(stepNumber);
-  }, [step, validateStep]);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateStep()) {
@@ -88,7 +83,8 @@ export default function App() {
       setIsSubmitted(true);
       setStep(4);
     }
-  };
+  }
+  
 
 
   const handleReset = () => {
