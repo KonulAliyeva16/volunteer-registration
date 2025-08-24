@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import type { MouseEvent, FC } from 'react';
 import type { StepProps, Skill, SkillCategory, SkillRatingProps } from "../types";
 

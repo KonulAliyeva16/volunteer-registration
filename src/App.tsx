@@ -117,7 +117,6 @@ export default function App() {
           <Stepper
             steps={stepperSteps}
             currentStep={step}
-            onStepChange={handleStepChange}
           />
         </div>
 
